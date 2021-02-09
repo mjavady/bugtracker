@@ -8,8 +8,8 @@ import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginFileEncode from "filepond-plugin-file-encode";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageResize from "filepond-plugin-image-resize";
-import "filepond/dist/filepond.min.css";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+// import "filepond/dist/filepond.min.css";
+// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 function NewTicket(props) {
   const context = useContext(AuthContext);
@@ -299,6 +299,9 @@ function NewTicket(props) {
                 /> */}
               </div>
               <Button
+                style={{
+                  marginTop: "40px",
+                }}
                 type="submit"
                 variant="contained"
                 color="primary"
