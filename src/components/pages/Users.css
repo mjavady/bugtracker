@@ -1,0 +1,39 @@
+.coll-div {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.coll-div-card {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.role-card {
+  width: 40%;
+  margin: 0 80px;
+}
+.dropdown-content li > a,
+.dropdown-content li > span {
+  font-size: 14px;
+  text-align: left;
+  color: #26a69a;
+  display: block;
+  line-height: 22px;
+  padding: 14px 16px;
+}
+@media only screen and (min-width: 992px) {
+  .res-but {
+    float: right;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin-bottom: 25px;
+  }
+}
+.res-but {
+  /* float: bottom !important; */
+  /* position: static !important; */
+  /* top: 0 !important;
+  right: 0 !important; */
+}

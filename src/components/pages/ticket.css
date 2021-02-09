@@ -1,0 +1,11 @@
+@media only screen and (max-width: 992px) {
+  .res-button {
+    height: 100%;
+  }
+  .res-ticket {
+    padding: 10px;
+  }
+}
+.res-button {
+  height: 100%;
+}

@@ -1,0 +1,65 @@
+.sidebar {
+  margin-top: 64px;
+}
+a {
+  text-decoration: none;
+}
+.brand-logo:hover {
+  color: white;
+}
+
+/* .footer-p {
+  padding-left: 260px;
+} */
+
+.searchBar-placeHolder ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: yellow;
+  opacity: 1; /* Firefox */
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(99, 99, 97);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: yellow;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: yellow;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* height: 2.5rem;            Footer height */
+}
+.sidenav.sidenav-fixed {
+  left: 0;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  position: fixed;
+  z-index: 0;
+}
+@media only screen and (max-width: 992px) {
+  .sidenav.sidenav-fixed {
+    z-index: -1;
+  }
+  .site-logo {
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  .site-logo-icon {
+    visibility: hidden;
+    /* width: 100%; */
+    /* text-align: center;
+    margin-left: 50px; */
+    /* margin-right: 0; */
+  }
+}
