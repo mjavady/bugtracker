@@ -58,7 +58,7 @@ function LoggedOut() {
           </div>
           <div style={{ margin: "25px 0" }}>
             Already logged in? Continue
-            <a href="/dashboard">here</a>
+            <a href="/dashboard"> here</a>
           </div>
         </div>
       </div>

@@ -61,7 +61,7 @@ const useForm = (validate) => {
         context.setCurrentUser(values.username);
         console.log("logged in >> redirecting");
         window.location.reload(true);
-        Cookies.set("username", values.username);
+        Cookies.set("username", values.username, { secure: true });
       } else if (res.data === "Already registered") {
         alert("A user with this username or email is already registered.");
       } else {
@@ -92,7 +92,7 @@ const useForm = (validate) => {
         context.login();
         context.isLoggedIn = true;
         console.log("logged in >> redirecting");
-        Cookies.set("username", values.username, { expires: 1 });
+        Cookies.set("username", values.username, { secure: true });
         window.location.reload(true);
       } else {
         setDataSaved(false);
