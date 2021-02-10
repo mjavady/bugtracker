@@ -1,26 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 function Logout() {
-  const logout = async () => {
-    try {
-      const res = await axios.get(
-        process.env.REACT_APP_BACKEND_URL + "/logout",
-        {
-          withCredentials: true,
+  useEffect(() => {
+    const logout = async () => {
+      try {
+        const res = await axios.get(
+          process.env.REACT_APP_BACKEND_URL + "/logout",
+          {
+            withCredentials: true,
+          }
+        );
+        if (res.data) {
+          Cookies.remove("username");
+          // window.location.reload();
         }
-      );
-      if (res.data) {
-        Cookies.remove("username");
-        // window.location.reload(false);
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  logout();
+    };
+    logout();
+  }, []);
   return (
     <div className="container form-card ">
       <div className="card gray darken-8 z-depth-3">

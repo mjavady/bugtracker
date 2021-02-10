@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import Cookies from "js-cookie";
 import "./register.css";
 import validate from "./validateInfo";
 import useForm from "../../hooks/useForm";
@@ -7,7 +7,8 @@ import { AuthContext } from "../../hooks/authContext";
 import { Icon } from "react-materialize";
 import Dashboard from "../pages/Dashboard";
 import Login from "./Login";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 // import NewNavbar from "../navbar/newNavbar";
 
 function Register(props) {
@@ -20,29 +21,28 @@ function Register(props) {
     resetButton,
     currentUser,
   } = useForm(validate);
-  const [currentPage, setCurrentPage] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState();
-  useEffect(() => {
-    setCurrentPage(window.location.pathname.toString().substring(1));
-    const checkAuth = async () => {
-      const res = await axios.get(
-        process.env.REACT_APP_BACKEND_URL + "/register",
-        {
-          withCredentials: true,
-        }
-      );
-      setIsAuthenticated(res.data);
-    };
-    checkAuth();
-  }, []);
-
   const context = useContext(AuthContext);
+  useEffect(() => {
+    // const checkAuth = async () => {
+    //   const res = await axios.get(
+    //     process.env.REACT_APP_BACKEND_URL + "/register",
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   );
+    // };
+    // checkAuth();
+  }, []);
+  const username = Cookies.get("username");
+  if (decodeURI(username) === context.userData.username) {
+    setIsAuthenticated(true);
+  }
+
   context.setCurrentUser(currentUser);
   if (isAuthenticated) {
     context.login();
     context.setCurrent("dashboard");
-  } else {
-    context.setCurrent("register");
   }
   return (
     <div className="page-bg center">
@@ -154,7 +154,7 @@ function Register(props) {
                       </p>
                     </form>
                   </div>
-                  {/* {dataSaved && <Redirect to="dashboard" />} */}
+                  {context.isLoggedIn && <Redirect to="dashboard" />}
                 </>
               ) : (
                 <>
