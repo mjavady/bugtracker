@@ -106,7 +106,17 @@ function App() {
           </div>
         }
       >
-        <LoggedOut />;
+        <Router>
+          <Switch>
+            <LoggedOut />;
+            <Route path="/register" exact>
+              <Register login={false} />
+            </Route>
+            <Route path="/login" exact>
+              <Register login={true} />
+            </Route>
+          </Switch>
+        </Router>
       </Suspense>
     );
   }
@@ -370,68 +380,42 @@ function App() {
             </div>
           }
         >
-          {isLoggedIn && <NewNavbar username={username} />}
-          <main className={isLoggedIn && "main"}>
+          <NewNavbar username={username} />
+          <main className="main">
             <Router>
               <Switch>
                 <Route path="/dashboard" exact>
-                  {isLoggedIn ? (
-                    <Dashboard
-                      demo={{
-                        username: context.username,
-                        role: context.role,
-                        email: context.email,
-                        projects: context.projects,
-                        tickets: context.tickets,
-                        comments: context.comments,
-                        users: context.users,
-                      }}
-                      role={userInfo.role}
-                      username={username}
-                    />
-                  ) : (
-                    <LoggedOut />
-                  )}
+                  <Dashboard
+                    demo={{
+                      username: context.username,
+                      role: context.role,
+                      email: context.email,
+                      projects: context.projects,
+                      tickets: context.tickets,
+                      comments: context.comments,
+                      users: context.users,
+                    }}
+                    role={userInfo.role}
+                    username={username}
+                  />
                 </Route>
                 <Route path="/" exact>
                   <LoggedOut />
                 </Route>
                 <Route path="/projects" exact>
-                  {isLoggedIn ? (
-                    <Projects role={userInfo.role} />
-                  ) : (
-                    <LoggedOut />
-                  )}
+                  <Projects role={userInfo.role} />
                 </Route>
                 <Route path="/profile" exact>
-                  {isLoggedIn ? (
-                    <Users role={userInfo.role} name={username} />
-                  ) : (
-                    <LoggedOut />
-                  )}
+                  <Users role={userInfo.role} name={username} />
                 </Route>
                 <Route path="/tickets" exact>
-                  {isLoggedIn ? <Tickets /> : <LoggedOut />}
+                  <Tickets />
                 </Route>
                 <Route path="/logout" exact>
                   <Logout />
                 </Route>
                 <Route path="/demo" exact>
                   <Demo />
-                </Route>
-                <Route path="/register" exact>
-                  {!isLoggedIn ? (
-                    <Register login={false} />
-                  ) : (
-                    <Redirect to="/dashboard" />
-                  )}
-                </Route>
-                <Route path="/login" exact>
-                  {!isLoggedIn ? (
-                    <Register login={true} />
-                  ) : (
-                    <Redirect to="/dashboard" />
-                  )}
                 </Route>
                 <Route>
                   <NotFoundPage />
@@ -440,11 +424,9 @@ function App() {
               </Switch>
             </Router>
           </main>
-          {isLoggedIn && (
-            <footer>
-              <NewFooter />
-            </footer>
-          )}
+          <footer>
+            <NewFooter />
+          </footer>
         </Suspense>
       </DemoContext.Provider>
     </AuthContext.Provider>
