@@ -92,7 +92,7 @@ const useForm = (validate) => {
         context.login();
         context.isLoggedIn = true;
         console.log("logged in >> redirecting");
-        Cookies.set("username", values.username, { secure: true });
+        Cookies.set("username", encodeURI(values.username), { secure: true });
         window.location.reload(true);
       } else {
         setDataSaved(false);

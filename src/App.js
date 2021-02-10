@@ -67,16 +67,18 @@ function App() {
   /* eslint-disable no-unused-vars */
   const username = Cookies.get("username");
   useEffect(() => {
-    const checkAuth = async () => {
-      const res = await Axios.get(
-        process.env.REACT_APP_BACKEND_URL + "/register",
-        {
-          withCredentials: true,
-        }
-      );
-      setIsLoggedIn(res.data);
-    };
-    checkAuth();
+    // const checkAuth = async () => {
+    //   const res = await Axios.get(
+    //     process.env.REACT_APP_BACKEND_URL + "/register",
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   );
+    // };
+    // checkAuth();
+    if (decodeURI(username) === userInfo.username) {
+      setIsLoggedIn(true);
+    }
     const fetchRole = async () => {
       const res = await Axios.get(
         process.env.REACT_APP_BACKEND_URL + "/fetchinfo",
