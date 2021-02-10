@@ -98,7 +98,17 @@ function App() {
     fetchRole();
   }, [username, isLoggedIn]);
   if (isLoggedIn === false) {
-    return <LoggedOut />;
+    return (
+      <Suspense
+        fallback={
+          <div className="center">
+            <Preloader active color="blue" flashing className="col s4" />
+          </div>
+        }
+      >
+        <LoggedOut />;
+      </Suspense>
+    );
   }
   return (
     <AuthContext.Provider
