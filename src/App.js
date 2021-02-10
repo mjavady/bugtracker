@@ -45,7 +45,7 @@ const NotFoundPage = React.lazy(() =>
 );
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(true);
   // const [ticketsData, setTicketsData] = useState();
   const context = useContext(DemoContext);
@@ -69,7 +69,6 @@ function App() {
   if (Cookies.get("username") !== undefined) {
     username = atob(Cookies.get("username"));
   }
-  console.log(username);
   useEffect(() => {
     const checkAuth = async () => {
       const res = await Axios.get(
