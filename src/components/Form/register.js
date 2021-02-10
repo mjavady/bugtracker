@@ -154,7 +154,7 @@ function Register(props) {
                       </p>
                     </form>
                   </div>
-                  {context.isLoggedIn && <Redirect to="dashboard" />}
+                  {/* {context.isLoggedIn && <Redirect to="dashboard" />} */}
                 </>
               ) : (
                 <>

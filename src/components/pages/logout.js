@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 function Logout() {
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
   useEffect(() => {
     const logout = async () => {
       try {
@@ -15,6 +16,7 @@ function Logout() {
         );
         if (res.data) {
           Cookies.remove("username");
+          setIsLoggedOut(true);
           // window.location.reload();
         }
       } catch (error) {
@@ -42,6 +44,7 @@ function Logout() {
           </div>
         </div>
       </div>
+      {isLoggedOut && <Redirect to="/" />}
     </div>
   );
 }
