@@ -108,7 +108,9 @@ function App() {
       >
         <Router>
           <Switch>
-            <LoggedOut />;
+            <Route path="/">
+              <LoggedOut />
+            </Route>
             <Route path="/register" exact>
               <Register login={false} />
             </Route>
@@ -400,7 +402,19 @@ function App() {
                   />
                 </Route>
                 <Route path="/" exact>
-                  <LoggedOut />
+                  <Dashboard
+                    demo={{
+                      username: context.username,
+                      role: context.role,
+                      email: context.email,
+                      projects: context.projects,
+                      tickets: context.tickets,
+                      comments: context.comments,
+                      users: context.users,
+                    }}
+                    role={userInfo.role}
+                    username={username}
+                  />
                 </Route>
                 <Route path="/projects" exact>
                   <Projects role={userInfo.role} />
