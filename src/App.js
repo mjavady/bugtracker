@@ -45,7 +45,7 @@ const NotFoundPage = React.lazy(() =>
 );
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(true);
   // const [ticketsData, setTicketsData] = useState();
   const context = useContext(DemoContext);
@@ -66,6 +66,9 @@ function App() {
   }, []);
   /* eslint-disable no-unused-vars */
   const username = Cookies.get("username");
+  if (decodeURI(username) === userInfo.username) {
+    setIsLoggedIn(true);
+  }
   useEffect(() => {
     // const checkAuth = async () => {
     //   const res = await Axios.get(
@@ -76,9 +79,6 @@ function App() {
     //   );
     // };
     // checkAuth();
-    if (decodeURI(username) === userInfo.username) {
-      setIsLoggedIn(true);
-    }
     const fetchRole = async () => {
       const res = await Axios.get(
         process.env.REACT_APP_BACKEND_URL + "/fetchinfo",
@@ -97,6 +97,9 @@ function App() {
     };
     fetchRole();
   }, [username, isLoggedIn]);
+  if (isLoggedIn === false) {
+    return <LoggedOut />;
+  }
   return (
     <AuthContext.Provider
       value={{
