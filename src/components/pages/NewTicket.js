@@ -88,6 +88,9 @@ function NewTicket(props) {
         alert("success");
         // setIsSaved(true);
         recordHistory("New ticket (" + values.title + ") saved", props.pID);
+        if (update) {
+          recordHistory("Ticket (" + values.title + ") modified", props.pID);
+        }
         window.location.reload(true);
       } else {
         console.log("failed");
