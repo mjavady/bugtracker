@@ -65,20 +65,22 @@ function App() {
     setUser(currentUser);
   }, []);
   /* eslint-disable no-unused-vars */
+  let username;
   if (Cookies.get("username") !== undefined) {
-    var username = atob(Cookies.get("username"));
+    username = atob(Cookies.get("username"));
   }
+  console.log(username);
   useEffect(() => {
     const checkAuth = async () => {
       const res = await Axios.get(
         process.env.REACT_APP_BACKEND_URL + "/register",
         {
-          withCredentials: true,
-        },
-        {
           params: {
             cookie: username,
           },
+        },
+        {
+          withCredentials: true,
         }
       );
       setIsLoggedIn(res.data);
