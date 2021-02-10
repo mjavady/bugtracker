@@ -10,6 +10,7 @@ import Projects from "./Projects";
 import Tickets from "./Tickets";
 import Users from "./Users";
 import "./Demo.css";
+import { Link } from "react-router-dom";
 
 function Demo() {
   const auth = useContext(AuthContext);
@@ -82,6 +83,7 @@ function Demo() {
             />
           </CollapsibleItem>
         </Collapsible>
+        <Link to="/">Back to the beginning</Link>
       </div>
     </>
   );
