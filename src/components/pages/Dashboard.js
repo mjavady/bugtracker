@@ -92,8 +92,10 @@ function Dashboard(props) {
   };
   return (
     <>
-      <h1>Dashboard</h1>
-      <h3>Hi {props.username}</h3>
+      <div style={{ paddingLeft: "12px" }}>
+        <h1>Dashboard</h1>
+        <h3>Hi {props.username}</h3>
+      </div>
       <div className="row container">
         <div className="col s12 l6 m12 center">
           <h3

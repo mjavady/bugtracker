@@ -108,6 +108,7 @@ function ProjectDetails(props) {
           <button
             className="btn waves-effect waves-light black yellow-text"
             name={ticket.title}
+            style={{ height: "auto" }}
             onClick={modifyTicket}
             variant="contained"
             color="secondary"
@@ -119,6 +120,7 @@ function ProjectDetails(props) {
             disabled={true}
             className="btn waves-effect waves-light black yellow-text"
             name={ticket.title}
+            style={{ height: "auto" }}
             onClick={modifyTicket}
             variant="contained"
             color="secondary"

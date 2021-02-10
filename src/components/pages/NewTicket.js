@@ -121,7 +121,6 @@ function NewTicket(props) {
         }
       );
       if (resTicket.data === true) {
-        alert("success");
         recordHistory(
           "A ticket (" + props.previousValues.title + ") was deleted",
           props.pID || props.previousValues.projectID
@@ -300,7 +299,7 @@ function NewTicket(props) {
               </div>
               <Button
                 style={{
-                  marginTop: "40px",
+                  marginTop: "50px",
                 }}
                 type="submit"
                 variant="contained"

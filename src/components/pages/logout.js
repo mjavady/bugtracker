@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import LoggedOut from "./loggedout";
 
 function Logout() {
   const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -15,9 +16,15 @@ function Logout() {
           }
         );
         if (res.data) {
-          Cookies.remove("username");
-          setIsLoggedOut(true);
-          // window.location.reload();
+          if (
+            Cookies.get("username") &&
+            Cookies.get("username") !== undefined
+          ) {
+            Cookies.remove("username");
+            setIsLoggedOut(true);
+            window.location.reload();
+            setIsLoggedOut(false);
+          }
         }
       } catch (error) {
         console.log(error);
@@ -25,11 +32,12 @@ function Logout() {
     };
     logout();
   }, []);
+
   return (
     <div className="container form-card ">
-      <div className="card gray darken-8 z-depth-3">
+      <h2 className="center">Successfully logged out!</h2>
+      {/* <div className="card gray darken-8 z-depth-3">
         <div className="card-content center">
-          <h2>You are not logged in!</h2>
           <Link
             style={{ margin: "25px 0" }}
             className="btn black yellow-text"
@@ -43,8 +51,8 @@ function Logout() {
             </Link>
           </div>
         </div>
-      </div>
-      {isLoggedOut && <Redirect to="/" />}
+      </div> */}
+      <LoggedOut />
     </div>
   );
 }
